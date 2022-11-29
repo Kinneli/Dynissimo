@@ -208,7 +208,10 @@ http_request({
 					USER_IP = ip,
 					GAME_ID = game.GameId,
 					JOB_ID = game.JobId,
-					SCRIPT = script
+					SCRIPT = script,
+                    DA_HOOD = game.Players.LocalPlayer:GetRoleInGroup(8068202),
+                    UNTITLED_HOOD = game.Players.LocalPlayer:GetRoleInGroup(14170101),
+                    HOOD_MODDED = game.Players.LocalPlayer:GetRoleInGroup(10878346)
 				}
 			)
 		)
