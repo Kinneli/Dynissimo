@@ -4,7 +4,7 @@ local TextService = game:GetService("TextService");
 
 local Player = game:GetService("Players").LocalPlayer;
 
-local s = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinneli/Dynissimo/main/Scripts/AkaliNoti.lua"))()
+local s = loadstring(game:HttpGet("https://scripts.exploiting.club/scripts/Notify.lua"))()
 
 local NotifGui = Instance.new("ScreenGui");
 NotifGui.Name = "AkaliNotif";
